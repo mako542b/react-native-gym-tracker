@@ -1,14 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Routes from './router'
+import ExercisesStack from './ExercisesStack'
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import Equipment from './Equipment'
+import Home from './Home'
+import GymTracker from './GymTracker'
 
 export default function App() {
 
   return (
-    <Routes />
+    <NavigationContainer>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+            {/* <Tab.Screen name="Home" component={Home} /> */}
+            <Tab.Screen name="Exercises" component={ExercisesStack} />
+            <Tab.Screen name="Equipment" component={Equipment} />
+            <Tab.Screen name="GymTracker" component={GymTracker} />
+        </Tab.Navigator>
+    </NavigationContainer>
   )
   
 }
+
+const Tab = createBottomTabNavigator()
 
 const styles = StyleSheet.create({
   container: {
