@@ -1,6 +1,6 @@
-import { View, ScrollView, Button, FlatList, Text, Image, Modal } from 'react-native'
+import { View, ScrollView, Button, FlatList, Text, Image, Modal, Pressable } from 'react-native'
 import { useState } from 'react'
-
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function ({ route }) {
 
@@ -32,20 +32,22 @@ export default function ({ route }) {
             />
             <Modal visible={modal}>
                 <ScrollView>
-                    <Button 
-                        title='X'
-                        onPress={() => setModal(false)}
-                    />
-                    <Text>
-                        {modalInfo?.title}
-                    </Text>
-                    <Text style={{padding:20, lineHeight: 18}}>
+                    <Pressable onPress={() => setModal(false)} style={{position:'relative', justifyContent:'center'}}>
+                        <Text style={{padding: 10, textAlign: 'center', backgroundColor: '#bbb', fontSize:20}}>
+                            {modalInfo?.title}
+                        </Text>
+                        <MaterialIcons name='close' style={{position:'absolute', left:10 }} size={20}/>
+                    </Pressable>
+                    <Text style={{padding:20, lineHeight: 18, textAlign:'right'}}>
                         {modalInfo?.description}
                     </Text>
                     <Image 
                         source={modalInfo?.image}
-                        style={{width:'100%'}}
-                        resizeMode="contain"
+                        style={{
+                            width:'100%', 
+                            resizeMode:"contain",
+                            maxHeight: 400
+                        }}
                     />
                 </ScrollView>
             </Modal>
