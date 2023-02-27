@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ExercisesStack from './ExercisesStack'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import GymTrackerStack from './GymTrackerStack';
 
 import Equipment from './Equipment'
 import Home from './Home'
@@ -16,7 +17,7 @@ export default function App() {
             {/* <Tab.Screen name="Home" component={Home} /> */}
             <Tab.Screen name="Exercises" component={ExercisesStack} />
             <Tab.Screen name="Equipment" component={Equipment} />
-            <Tab.Screen name="GymTracker" component={GymTracker} />
+            <Tab.Screen name="GymTracker" component={GymTrackerStack} />
         </Tab.Navigator>
     </NavigationContainer>
   )

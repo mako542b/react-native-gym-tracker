@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet, Button } from 'react-native'
 
-export default function () {
+export default function ({ navigation }) {
 
     return(
         <View>
-            <Text>
-                Gym tracker
-            </Text>
+            <Button 
+                title='Previous workouts'
+                onPress={() => navigation.navigate('Your sessions')}
+            />
         </View>
     )
 }
