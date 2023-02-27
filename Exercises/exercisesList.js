@@ -5,7 +5,7 @@ export const exercisesList = [
         data: [
         {
             title: 'Bench press',
-            image: require('./assets/bench-press.jpg'),
+            image: require('../assets/bench-press.jpg'),
             key: 'bench-1',
             description: 
             `Equipment needed: barbell (additional weights optional) or dumbbells, flat bench.
@@ -23,13 +23,13 @@ export const exercisesList = [
             -Perform 5 to 10 reps, depending on weight used. Perform up to 3 sets.`
         }, {
             title: 'High pulley Cable Crossover',
-            image: require('./assets/high-pulley-cable-crossover.jpg'),
+            image: require('../assets/high-pulley-cable-crossover.jpg'),
             key:'bench-2',
             description: 'High pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable CrossoverHigh pulley Cable Crossover'
         },
         {
             title: 'Push ups',
-            image: require('./assets/push-ups.jpg'),
+            image: require('../assets/push-ups.jpg'),
             key:'bench-3',
             description: 'Push upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush ups'
         },

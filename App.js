@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import ExercisesStack from './ExercisesStack'
+import ExercisesStack from './Exercises/ExercisesStack'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import GymTrackerStack from './GymTrackerStack';
+import GymTrackerStack from './Tracker/GymTrackerStack';
 
 import Equipment from './Equipment'
-import Home from './Home'
-import GymTracker from './GymTracker'
 
 export default function App() {
 
