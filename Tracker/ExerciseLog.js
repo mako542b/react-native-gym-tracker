@@ -6,29 +6,27 @@ import ReadySet from './ReadySet'
 export default function () {
     return (
         <View style={{margin: 20, padding: 10, backgroundColor: '#eee'}}>
-                <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>Bench press</Text>
-                
-                <SetLog />
+            <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>Bench press</Text>
+            
+            <SetLog />
 
-                <Pressable 
-                    style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center', backgroundColor:'#efefef', alignSelf:'flex-end', padding:5}}
-                    onPress={() => null}
-                >
-                    <Text>Add set</Text>
-                    <MaterialIcons name='add'  size={30}/>
-                </Pressable>
-
-                {/* <ReadySet /> */}
-
-                <FlatList
-                    data={exampleExercise.sets}
-                    renderItem={({ item }) => (
-                        <ReadySet set={item}/>
-                    )}
-                />
+            <Pressable 
+                style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center', backgroundColor:'#efefef', alignSelf:'flex-end', padding:5}}
+                onPress={() => null}
+            >
+                <Text>Add set</Text>
+                <MaterialIcons name='add'  size={30}/>
+            </Pressable>
 
 
-            </View>
+
+
+            {exampleExercise.sets.map(item => (
+                <ReadySet set={item} key={item.key} />
+            ))}
+
+
+        </View>
     )
 }
 
@@ -56,3 +54,14 @@ const exampleExercise = {
         },
     ]
 }
+
+
+const history = [
+    {
+        date: '28.02.2023',
+        group: 'Cardio',
+        exercises: [
+            exampleExercise
+        ]
+    }
+]

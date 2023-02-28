@@ -15,6 +15,14 @@ export default function() {
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <ScrollView style={{height:'100%'}}>
+
+                <Pressable 
+                    // onPress={() => setModal(false)} 
+                    style={{alignSelf:'center', backgroundColor:'#eee', padding:10, borderRadius: 14,}}
+                >
+                    <MaterialIcons name='add'  size={35}/>
+                </Pressable>
+
                 <TextInput
                     placeholder="date"
                     value={date}
@@ -23,12 +31,6 @@ export default function() {
                     style={{fontSize: 20, padding:5, textAlign: 'center'}}
                 />
 
-                <Pressable 
-                    // onPress={() => setModal(false)} 
-                    style={{alignSelf:'center', backgroundColor:'#eee', padding:10, borderRadius: 14,}}
-                >
-                    <MaterialIcons name='add'  size={35}/>
-                </Pressable>
 
                 <View style={{margin: 20, backgroundColor:'#eee', padding: 20}}>
                     <View style={{flexDirection: 'column', alignItems: 'center'}}>
@@ -57,7 +59,6 @@ export default function() {
 
 
                 
-                {/* <ExerciseLog /> */}
                 <ExerciseLog />
 
                 
