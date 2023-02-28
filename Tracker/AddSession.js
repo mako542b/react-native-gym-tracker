@@ -13,7 +13,7 @@ export default function() {
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View style={{height:'100%'}}>
+            <ScrollView style={{height:'100%'}}>
                 <TextInput
                     placeholder="date"
                     value={date}
@@ -50,7 +50,6 @@ export default function() {
                             data={exercisesList}
                             renderItem={({ item }) => (
                                 <ChooseGroup group={item} setExercise={setExercise} setModal={setModal}/>
-                                // <Text>{item.name}</Text>
                             )}
                         
                         />
@@ -58,9 +57,10 @@ export default function() {
 
 
             <View style={{margin: 20, padding: 10, backgroundColor: '#eee'}}>
-                <Text style={{textAlign: 'center', fontSize: 22,}}>Bench press</Text>
-                <View style={{flexDirection:'row', alignItems:'center'}}>
-                    <Text style={{marginEnd:10}}>Set 1:</Text>
+                <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>Bench press</Text>
+                
+                <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
+                    <Text style={{marginEnd:10, fontWeight:'bold'}}>Set 3:</Text>
                     <View style={{flex:1}}>
                         <View style={{flexDirection: 'row', alignItems:'center',}}>
                             <Text>Reps:</Text>
@@ -83,6 +83,12 @@ export default function() {
                                 inputMode="numeric"
                             />
                         </View>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Other: </Text>
+                            <TextInput 
+                                style={{backgroundColor:'#fef', marginHorizontal:8, marginVertical:4, borderRadius:8, paddingHorizontal:4, flex:1}}
+                            />
+                        </View>
                     </View>
                     <View style={{marginLeft:'auto', justifyContent:'space-around'}}>
                         <View style={{marginBottom:5}}>
@@ -90,6 +96,82 @@ export default function() {
                         </View>                    
                         <View style={{marginTop:5}}>
                             <Button title='Delete' color='#f40'/>
+                        </View>
+                    </View>
+                </View>
+
+                <Pressable 
+                    style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center', backgroundColor:'#efefef', alignSelf:'flex-end', padding:5}}
+                    onPress={() => null}
+                >
+                    <Text>Add set</Text>
+                    <MaterialIcons name='add'  size={30}/>
+                </Pressable>
+
+
+                <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
+                    <Text style={{marginEnd:10}}>Set 2:</Text>
+                    <View style={{flex:1}}>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Reps: 8</Text>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Duration (min): 20</Text>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Weight (kg): 70</Text>
+                        </View>
+                    </View>
+                    <View style={{marginLeft:'auto', justifyContent:'space-around'}}>
+                        <View >
+                            <Button title='Edit' />
+                        </View>
+                    </View>
+                </View>
+
+
+                <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
+                    <Text style={{marginEnd:10}}>Set 1:</Text>
+                    <View style={{flex:1}}>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Reps: 8</Text>
+                        </View>
+                        {/* <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Duration (min):</Text>
+                        </View> */}
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Weight (kg): 70</Text>
+                        </View>
+                    </View>
+                    <View style={{marginLeft:'auto', justifyContent:'space-around'}}>
+                        <View>
+                            <Button title='Edit' />
+                        </View>
+                    </View>
+                </View>
+
+            </View>
+
+
+
+            <View style={{margin: 20, padding: 10, backgroundColor: '#eee'}}>
+                <Text style={{textAlign: 'center', fontSize: 22,}}>High pulley Cable Crossover</Text>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Text style={{marginEnd:10}}>Set 1:</Text>
+                    <View style={{flex:1}}>
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Reps: 8</Text>
+                        </View>
+                        {/* <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Duration (min):</Text>
+                        </View> */}
+                        <View style={{flexDirection: 'row', alignItems:'center',}}>
+                            <Text>Weight (kg): 70</Text>
+                        </View>
+                    </View>
+                    <View style={{marginLeft:'auto', justifyContent:'space-around'}}>
+                        <View style={{marginBottom:5}}>
+                            <Button title='Edit' />
                         </View>
                     </View>
                 </View>
@@ -101,8 +183,10 @@ export default function() {
                     <MaterialIcons name='add'  size={30}/>
                 </Pressable>
             </View>
+
+
                 
-            </View>
+            </ScrollView>
         </TouchableWithoutFeedback>
     )
 }
