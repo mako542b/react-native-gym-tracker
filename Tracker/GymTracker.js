@@ -8,6 +8,10 @@ export default function ({ navigation }) {
                 title='Previous workouts'
                 onPress={() => navigation.navigate('Your sessions')}
             />
+            <Button
+                title='Add session'
+                onPress={() => navigation.navigate('Add session')}
+            />
         </View>
     )
 }
