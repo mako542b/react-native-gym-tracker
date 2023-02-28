@@ -1,0 +1,58 @@
+import { View, Button, FlatList, Text, TextInput, Pressable } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'
+import SetLog from './SetLog'
+import ReadySet from './ReadySet'
+
+export default function () {
+    return (
+        <View style={{margin: 20, padding: 10, backgroundColor: '#eee'}}>
+                <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>Bench press</Text>
+                
+                <SetLog />
+
+                <Pressable 
+                    style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center', backgroundColor:'#efefef', alignSelf:'flex-end', padding:5}}
+                    onPress={() => null}
+                >
+                    <Text>Add set</Text>
+                    <MaterialIcons name='add'  size={30}/>
+                </Pressable>
+
+                {/* <ReadySet /> */}
+
+                <FlatList
+                    data={exampleExercise.sets}
+                    renderItem={({ item }) => (
+                        <ReadySet set={item}/>
+                    )}
+                />
+
+
+            </View>
+    )
+}
+
+
+const exampleExercise = {
+    name: 'Bench press',
+    key: 'test',
+    sets: [
+        {
+            setNumber: 1,
+            reps: 8,
+            weight: 70,
+            others: 'last only half rep last only half rep last only half rep half rep ly half rephalf  last only half rephalf rep last only half rep',
+            key:'12'
+        },{
+            setNumber: 2,
+            reps: 7,
+            weight: 72.5,
+            key:'32'
+        },{
+            setNumber: 3,
+            reps: 5,
+            weight: 75,
+            key:'46'
+        },
+    ]
+}
