@@ -33,7 +33,8 @@ export const exercisesList = [
             key:'bench-3',
             description: 'Push upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush upsPush ups'
         },
-    ]},{
+    ]}
+    ,{
         name: 'back',
         key: 2,
         data: [
