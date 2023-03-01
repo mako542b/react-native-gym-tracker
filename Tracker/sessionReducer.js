@@ -1,28 +1,48 @@
 import idGenerator from '../Utils/idGenerator'
+import immer from 'immer'
 
 
 export default function(state, action) {
-    const newState = [...state]
+    // const newState = [...state]
     switch(action.type){
-        case 'addSession':
+        case 'addSession':{
             const newSession = {date: action.payload.date, group: action.payload.group, key:idGenerator(),exercises:[]}
-            newState.push(newSession)
+            const newState = immer(state, draft => {
+                draft.push(newSession)
+                return draft
+            })
             return newState
+        }
 
-        case 'addExercise':
-            console.log('lllllllllllllllllllllllllll')
+        case 'addExercise':{
             const newExercise = {
                 name: action.payload.exercise, 
                 key:idGenerator(), 
-                sets:[]
+                sets:[],
+                timestamp: new Date().getTime(),
             }
-            const index = newState.findIndex(s => s.key === action.payload.key)
-            if(index < 0) return newState
-            const modSession = {...newState[index]}
-            modSession.exercises.push(newExercise)
-            newState[index] = modSession
+            const newState = immer(state, draft => {
+                const modSession = draft.find(s => s.key === action.payload.key)
+                modSession.exercises.push(newExercise)
+                return draft
+            })
             return newState
-            
+        }
+
+        case 'addSet':{
+            const newState = immer(state, draft => {
+                const newSet = {
+                    ...action.payload.setInfo, 
+                    key:idGenerator(), 
+                    timestamp: new Date().getTime(),
+                }
+                const modSession = draft.find(s => s.key === action.payload.sessionKey)
+                const modExercise = modSession.exercises.find(e => e.key === action.payload.exerciseKey)
+                modExercise.sets.push(newSet)
+                return draft
+            })
+            return newState 
+        }    
 
         default:
             return state

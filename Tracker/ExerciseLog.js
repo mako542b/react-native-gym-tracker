@@ -2,30 +2,37 @@ import { View, Button, FlatList, Text, TextInput, Pressable } from 'react-native
 import { MaterialIcons } from '@expo/vector-icons'
 import SetLog from './SetLog'
 import ReadySet from './ReadySet'
+import { useState } from 'react'
 
-export default function ({ exercise }) {
+export default function ({ exercise, sessionsDispatch, sessionKey }) {
+
+    const [addSet, setAddSet] = useState(false)
+
+
     return (
         <View style={{ padding: 10, backgroundColor: '#eee'}}>
 
-            <View style={{position:'relative', justifyContent:'center'}}>
-                <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>{exercise.name}</Text>
+            <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>{exercise.name}</Text>
+        
+            {addSet ? (
+                <SetLog 
+                    setAddSet={setAddSet}
+                    sessionsDispatch={sessionsDispatch}
+                    sessionKey={sessionKey}
+                    exerciseKey={exercise.key}
+                /> 
+            ) : (
                 <Pressable 
-                    style={{flexDirection:'row', position:'absolute', right:0, alignItems:'center', padding:5}}
-                    onPress={() => null}
+                    style={{flexDirection:'row', alignItems:'center', padding:0, alignSelf:'flex-end'}}
+                    onPress={() => setAddSet(prev => !prev)}
                 >
                     <Text>Add set</Text>
-                    <MaterialIcons name='add'  size={20}/>
+                    <MaterialIcons name='add' size={20}/>
                 </Pressable>
-            </View>
-            
+            )}
 
-
-
-
-                {/* <SetLog /> */}
-
-            {exercise.sets?.map(item => (
-                <ReadySet set={item} key={item.key} />
+            {exercise.sets?.slice().sort((a,b) => b.timestamp - a.timestamp).map((item, index) => (
+                <ReadySet set={item} key={item.key} index={exercise.sets.length - index}/>
             ))}
 
 

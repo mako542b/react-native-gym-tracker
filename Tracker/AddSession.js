@@ -12,6 +12,7 @@ export default function({ session, sessionsDispatch }) {
 
     function addExercise() {
         sessionsDispatch({type:'addExercise', payload: {exercise, key:session.key}})
+        setExercise('')
         setModal(false)
     }
 
@@ -55,7 +56,12 @@ export default function({ session, sessionsDispatch }) {
 
                 
                 {session?.exercises && session.exercises.map(exercise => (
-                    <ExerciseLog exercise={exercise} key={exercise.key}/>
+                    <ExerciseLog 
+                        exercise={exercise} 
+                        key={exercise.key}
+                        sessionsDispatch={sessionsDispatch}
+                        sessionKey={session.key}
+                    />
                 ))}
 
                 

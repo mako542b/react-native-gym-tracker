@@ -1,12 +1,12 @@
 import { View, Button, Flatlist, Text, TextInput, Pressable } from 'react-native'
 import SetInfo from './SetInfo'
 
-export default function ({ set }) {
+export default function ({ set, index }) {
  
  
     return (
         <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
-            <Text style={{marginEnd:10, fontWeight:'bold'}}>Set {set.setNumber}:</Text>
+            <Text style={{marginEnd:10, fontWeight:'bold'}}>Set {index}:</Text>
             <View style={{flex:1, marginRight:10}}>
                 {set.reps && <SetInfo label='Reps' info={set.reps}/>}
                 {set.duration && <SetInfo label='Duration (min)' info={set.duration}/>}
