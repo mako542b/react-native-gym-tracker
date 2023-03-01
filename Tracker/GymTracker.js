@@ -9,7 +9,7 @@ import sessionsReducer from './sessionReducer'
 
 export default function ({ navigation }) {
 
-    const [allSessions, sessionsDispatch] = useReducer(sessionsReducer, history)
+    const [allSessions, sessionsDispatch] = useReducer(sessionsReducer, [])
     const [modal, setModal] = useState(false)
     const [date, setDate] = useState(() => new Date().toLocaleDateString())
     const [group, setGroup] = useState('')
@@ -75,59 +75,59 @@ export default function ({ navigation }) {
 
 
 
-const exampleExercise = {
-    name: 'Bench press',
-    key: 'test',
-    sets: [
-        {
-            setNumber: 1,
-            reps: 8,
-            weight: 70,
-            others: 'last only half rep',
-            key:'12'
-        },{
-            setNumber: 2,
-            reps: 7,
-            weight: 72.5,
-            key:'32'
-        },{
-            setNumber: 3,
-            reps: 5,
-            weight: 75,
-            key:'46'
-        },
-    ]
-}
+// const exampleExercise = {
+//     name: 'Bench press',
+//     key: 'test',
+//     sets: [
+//         {
+//             setNumber: 1,
+//             reps: 8,
+//             weight: 70,
+//             others: 'last only half rep',
+//             key:'12'
+//         },{
+//             setNumber: 2,
+//             reps: 7,
+//             weight: 72.5,
+//             key:'32'
+//         },{
+//             setNumber: 3,
+//             reps: 5,
+//             weight: 75,
+//             key:'46'
+//         },
+//     ]
+// }
 
-const secondExampleExercise = {
-    name: 'Push ups',
-    key: 'tes2',
-    sets: [
-        {
-            setNumber: 1,
-            reps: 20,
-            key:'12g'
-        },{
-            setNumber: 2,
-            reps: 22,
-            key:'32g'
-        },{
-            setNumber: 3,
-            reps: 18,
-            key:'46g'
-        },
-    ]
-}
+// const secondExampleExercise = {
+//     name: 'Push ups',
+//     key: 'tes2',
+//     sets: [
+//         {
+//             setNumber: 1,
+//             reps: 20,
+//             key:'12g'
+//         },{
+//             setNumber: 2,
+//             reps: 22,
+//             key:'32g'
+//         },{
+//             setNumber: 3,
+//             reps: 18,
+//             key:'46g'
+//         },
+//     ]
+// }
 
 
-const history = [
-    {
-        date: '28.02.2023',
-        group: 'Cardio',
-        key: '123456789',
-        exercises: [
-            exampleExercise,
-            secondExampleExercise
-        ]
-    },
-]
+// const history = [
+//     {
+//         date: '28.02.2023',
+//         group: 'Cardio',
+//         key: '123456789',
+//         exercises: [
+//             exampleExercise,
+//             secondExampleExercise
+//         ]
+//     },
+// ]

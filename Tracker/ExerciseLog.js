@@ -44,7 +44,6 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
                 />
             ))}
 
-
         </View>
     )
 }

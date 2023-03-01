@@ -6,7 +6,12 @@ export default function(state, action) {
     // const newState = [...state]
     switch(action.type){
         case 'addSession':{
-            const newSession = {date: action.payload.date, group: action.payload.group, key:idGenerator(),exercises:[]}
+            const newSession = {
+                date: action.payload.date, 
+                group: action.payload.group, 
+                key:idGenerator(),
+                exercises:[]
+            }
             const newState = immer(state, draft => {
                 draft.push(newSession)
                 return draft
@@ -22,7 +27,7 @@ export default function(state, action) {
                 timestamp: new Date().getTime(),
             }
             const newState = immer(state, draft => {
-                const modSession = draft.find(s => s.key === action.payload.key)
+                const modSession = draft.find(s => s.key === action.payload.sessionKey)
                 modSession.exercises.push(newExercise)
                 return draft
             })
