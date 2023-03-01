@@ -3,25 +3,28 @@ import { MaterialIcons } from '@expo/vector-icons'
 import SetLog from './SetLog'
 import ReadySet from './ReadySet'
 
-export default function () {
+export default function ({ exercise }) {
     return (
-        <View style={{margin: 20, padding: 10, backgroundColor: '#eee'}}>
-            <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>Bench press</Text>
+        <View style={{ padding: 10, backgroundColor: '#eee'}}>
+
+            <View style={{position:'relative', justifyContent:'center'}}>
+                <Text style={{textAlign: 'center', fontSize: 22, padding:5}}>{exercise.name}</Text>
+                <Pressable 
+                    style={{flexDirection:'row', position:'absolute', right:0, alignItems:'center', padding:5}}
+                    onPress={() => null}
+                >
+                    <Text>Add set</Text>
+                    <MaterialIcons name='add'  size={20}/>
+                </Pressable>
+            </View>
             
-            <SetLog />
-
-            <Pressable 
-                style={{flexDirection:'row', justifyContent:'flex-end', alignItems:'center', backgroundColor:'#efefef', alignSelf:'flex-end', padding:5}}
-                onPress={() => null}
-            >
-                <Text>Add set</Text>
-                <MaterialIcons name='add'  size={30}/>
-            </Pressable>
 
 
 
 
-            {exampleExercise.sets.map(item => (
+                {/* <SetLog /> */}
+
+            {exercise.sets?.map(item => (
                 <ReadySet set={item} key={item.key} />
             ))}
 

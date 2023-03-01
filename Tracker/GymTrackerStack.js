@@ -10,8 +10,8 @@ export default function() {
     return (
         <TrackerStack.Navigator>
             <TrackerStack.Screen name='Home' component={GymTracker}/>
-            <TrackerStack.Screen name='Your sessions' component={TrackerHistory}/>
-            <TrackerStack.Screen name='Add session' component={AddSession}/>
+            {/* <TrackerStack.Screen name='Your sessions' component={TrackerHistory}/>
+            <TrackerStack.Screen name='Add session' component={AddSession}/> */}
         </TrackerStack.Navigator>
     )
 

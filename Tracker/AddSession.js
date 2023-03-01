@@ -1,49 +1,49 @@
 import { View, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard, Modal, Pressable, ScrollView, FlatList } from "react-native";
 import { useState } from "react";
-import { MaterialIcons } from '@expo/vector-icons';
 import { exercisesList } from "../Exercises/exercisesList";
 import ChooseGroup from "./ChooseGroup";
 import ExerciseLog from "./ExerciseLog";
 import idGenerator from '../Utils/idGenerator'
 
-export default function() {
+export default function({ session, setAllSessions }) {
 
-    const [date, setDate] = useState(() => new Date().toLocaleDateString())
     const [modal, setModal] = useState(false)
     const [exercise, setExercise] = useState('')
 
+    function addExercise() {
+        setAllSessions(prev => {
+            const modSession = prev.findIndex(s => s.key === session.key)
+            prev[modSession] = {...prev[modSession], exercises:[...prev[modSession].exercises, {name:exercise, key:idGenerator(), sets:[]}]}
+            // modSession.exercises.push({name:exercise, key:idGenerator(), sets:[]})
+            return [...prev]
+        })
+        setModal(false)
+    }
+
     return (
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <ScrollView style={{height:'100%'}}>
-
-                <Pressable 
-                    // onPress={() => setModal(false)} 
-                    style={{alignSelf:'center', backgroundColor:'#eee', padding:10, borderRadius: 14,}}
-                >
-                    <MaterialIcons name='add'  size={35}/>
-                </Pressable>
-
-                <TextInput
-                    placeholder="date"
-                    value={date}
-                    onChangeText={(value) => setDate(value)}
-                    keyboardType='number-pad'
-                    style={{fontSize: 20, padding:5, textAlign: 'center'}}
-                />
+        // <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View>
 
 
-                <View style={{margin: 20, backgroundColor:'#eee', padding: 20}}>
+                <View style={{ backgroundColor:'#eee', padding: 20}}>
                     <View style={{flexDirection: 'column', alignItems: 'center'}}>
-                        <Text style={{fontSize: 20, marginBottom: 10,}}>Exercise:</Text>
+                        <Text style={{fontSize: 20, marginBottom: 2,}}>Add exercise:</Text>
                         <TextInput 
                             style={{backgroundColor: '#fff', width: '100%', padding: 6, fontSize:20}}
                             value={exercise}
                             onChangeText={(value) => setExercise(value)}
                         />
-                        <Button 
-                            title="Choose from popular"
-                            onPress={() => setModal(true)}
-                        />
+                        <View style={{flexDirection: 'row', justifyContent:'space-between', width:'100%'}}>
+                            <Button 
+                                title="Choose from popular"
+                                onPress={() => setModal(true)}
+                            />
+                            <Button 
+                                title="Add"
+                                onPress={addExercise}
+                            />
+
+                        </View>
                     </View>
 
                 </View>
@@ -59,10 +59,12 @@ export default function() {
 
 
                 
-                <ExerciseLog />
+                {session?.exercises && session.exercises.map(exercise => (
+                    <ExerciseLog exercise={exercise} key={exercise.key}/>
+                ))}
 
                 
-            </ScrollView>
-        </TouchableWithoutFeedback>
+            </View>
+        // </TouchableWithoutFeedback>
     )
 }
