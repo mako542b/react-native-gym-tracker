@@ -16,10 +16,12 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
         
             {addSet ? (
                 <SetLog 
-                    setAddSet={setAddSet}
+                    cancelFn={setAddSet}
                     sessionsDispatch={sessionsDispatch}
                     sessionKey={sessionKey}
                     exerciseKey={exercise.key}
+                    index={exercise.sets.length + 1}
+                    action='addSet'
                 /> 
             ) : (
                 <Pressable 
@@ -32,7 +34,14 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
             )}
 
             {exercise.sets?.slice().sort((a,b) => b.timestamp - a.timestamp).map((item, index) => (
-                <ReadySet set={item} key={item.key} index={exercise.sets.length - index}/>
+                <ReadySet 
+                    set={item} 
+                    key={item.key}
+                    index={exercise.sets.length - index}
+                    sessionsDispatch={sessionsDispatch}
+                    sessionKey={sessionKey}
+                    exerciseKey={exercise.key}
+                />
             ))}
 
 

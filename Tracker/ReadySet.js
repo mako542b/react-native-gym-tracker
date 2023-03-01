@@ -1,7 +1,24 @@
+import { useState } from 'react'
 import { View, Button, Flatlist, Text, TextInput, Pressable } from 'react-native'
 import SetInfo from './SetInfo'
+import SetLog from './SetLog'
 
-export default function ({ set, index }) {
+export default function ({ set, index, exerciseKey, sessionKey, sessionsDispatch}) {
+
+    const [isEditing, setIsEditing] = useState(false)
+
+    if(isEditing){
+        return (
+            <SetLog 
+                sessionsDispatch={sessionsDispatch}
+                sessionKey={sessionKey}
+                exerciseKey={exerciseKey}
+                index={index}
+                set={set}
+                action='editSet'
+                cancelFn={setIsEditing}
+            />
+    )}
  
  
     return (
@@ -15,7 +32,9 @@ export default function ({ set, index }) {
             </View>
             <View style={{marginLeft:'auto', justifyContent:'space-around'}}>
                 <View >
-                    <Button title='Edit' />
+                    <Button title='Edit' 
+                        onPress={() => setIsEditing(true)}
+                    />
                 </View>
             </View>
         </View>
