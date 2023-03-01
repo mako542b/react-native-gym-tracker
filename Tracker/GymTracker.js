@@ -1,14 +1,15 @@
 import { View, Text, StyleSheet, Button, FlatList, Pressable, ScrollView, Modal, TextInput } from 'react-native'
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
 import idGenerator from '../Utils/idGenerator'
 import AddSession from './AddSession'
 import SessionWrap from './SessionWrap'
 import { MaterialIcons } from '@expo/vector-icons'
+import sessionsReducer from './sessionReducer'
 
 
 export default function ({ navigation }) {
 
-    const [allSessions, setAllSessions] = useState(history)
+    const [allSessions, sessionsDispatch] = useReducer(sessionsReducer, history)
     const [modal, setModal] = useState(false)
     const [date, setDate] = useState(() => new Date().toLocaleDateString())
     const [group, setGroup] = useState('')
@@ -26,7 +27,7 @@ export default function ({ navigation }) {
                 <SessionWrap 
                     session={session} 
                     key={session.key} 
-                    setAllSessions={setAllSessions}
+                    sessionsDispatch={sessionsDispatch}
                 />
             ))}
 
@@ -61,7 +62,7 @@ export default function ({ navigation }) {
                 <Button 
                     title='Add'
                     onPress={() => {
-                        setAllSessions(prev => [...prev, {date, group, key:idGenerator(),exercises:[]}])
+                        sessionsDispatch({type:'addSession', payload: {date, group}})
                         setModal(false)
                     }}
                 />

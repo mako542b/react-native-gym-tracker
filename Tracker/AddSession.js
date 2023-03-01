@@ -5,18 +5,13 @@ import ChooseGroup from "./ChooseGroup";
 import ExerciseLog from "./ExerciseLog";
 import idGenerator from '../Utils/idGenerator'
 
-export default function({ session, setAllSessions }) {
+export default function({ session, sessionsDispatch }) {
 
     const [modal, setModal] = useState(false)
     const [exercise, setExercise] = useState('')
 
     function addExercise() {
-        setAllSessions(prev => {
-            const modSession = prev.findIndex(s => s.key === session.key)
-            prev[modSession] = {...prev[modSession], exercises:[...prev[modSession].exercises, {name:exercise, key:idGenerator(), sets:[]}]}
-            // modSession.exercises.push({name:exercise, key:idGenerator(), sets:[]})
-            return [...prev]
-        })
+        sessionsDispatch({type:'addExercise', payload: {exercise, key:session.key}})
         setModal(false)
     }
 

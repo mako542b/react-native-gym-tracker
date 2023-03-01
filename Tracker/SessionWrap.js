@@ -4,7 +4,7 @@ import { View, Pressable, Text } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 
-export default function({ session, setAllSessions }) {
+export default function({ session, sessionsDispatch }) {
 
     const [expanded, setExpanded] = useState(false)
 
@@ -23,7 +23,7 @@ export default function({ session, setAllSessions }) {
                     size={30}
                 />    
             </Pressable> 
-            {expanded ? <AddSession session={session} setAllSessions={setAllSessions}/> : null}
+            {expanded ? <AddSession session={session} sessionsDispatch={sessionsDispatch}/> : null}
         </View>
     )
 }
