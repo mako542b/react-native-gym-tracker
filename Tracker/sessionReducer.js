@@ -25,12 +25,11 @@ export default function(state, action) {
     }
 }
 
-
-
+// new Date().toLocaleDateString
 
 function addSession(state, payload){
     const newSession = {
-        date: payload.date, 
+        date: payload.date,
         group: payload.group, 
         key:idGenerator(),
         exercises:[]

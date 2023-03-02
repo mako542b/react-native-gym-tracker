@@ -15,7 +15,7 @@ export default function({ session, sessionsDispatch }) {
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
             >   
                 
-                <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date}</Text>
+                <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date.toLocaleDateString()}</Text>
                 {session?.group && <Text>{session.group}</Text>}
                 <MaterialIcons 
                     name={`${expanded ? 'arrow-drop-up' : 'arrow-drop-down'}`}

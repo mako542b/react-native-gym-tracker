@@ -25,7 +25,7 @@ export default function ({ cancelFn, exerciseKey, sessionKey, sessionsDispatch, 
     }
 
     return (
-        <View style={{flexDirection:'row', alignItems:'center', backgroundColor: '#7dd', padding:15,}}>
+        <View style={{flexDirection:'row', alignItems:'center', backgroundColor: '#7dd', padding:15,borderRadius:6,}}>
             <Text style={{marginEnd:10, fontWeight:'bold'}}>Set {index}:</Text>
             <View style={{flex:1}}>
                 <SetInput 
