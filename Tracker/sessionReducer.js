@@ -30,7 +30,7 @@ export default function(state, action) {
 function addSession(state, payload){
     const newSession = {
         date: payload.date,
-        group: payload.group, 
+        tags: payload.tags, 
         key:idGenerator(),
         exercises:[]
     }

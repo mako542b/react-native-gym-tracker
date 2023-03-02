@@ -9,7 +9,7 @@ export default function ({ sessionsDispatch }) {
 
     const [addSession, setAddSession] = useState(false)
     const [date, setDate] = useState(() => new Date())
-    const [group, setGroup] = useState('')
+    const [tags, setTags] = useState([])
 
     
 
@@ -28,14 +28,15 @@ export default function ({ sessionsDispatch }) {
                 <View style={{backgroundColor:'#49e', padding:15}}>
                     <DatePicker date={date} setDate={setDate}/>
                     <AddTags 
-                        group={group}
-                        setGroup={setGroup}
+                        tags={tags}
+                        setTags={setTags}
                     />
                     <AddSessionButtons 
                         sessionsDispatch={sessionsDispatch} 
                         setAddSession={setAddSession}
                         date={date}
-                        group={group}
+                        tags={tags}
+                        setTags={setTags}
                     />
                 </View>
             )}

@@ -16,7 +16,15 @@ export default function({ session, sessionsDispatch }) {
             >   
                 
                 <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date.toLocaleDateString()}</Text>
-                {session?.group && <Text>{session.group}</Text>}
+                {session?.tags?.length > 0 && (
+                    <View style={{flexDirection:'row', width:'80%', flexWrap:'wrap', justifyContent:'center'}}>
+                        {session.tags.map(tag => (
+                            <Text key={tag} style={{paddingHorizontal:6}}>{tag}</Text>
+                        ))}
+
+                    </View>
+                )}
+                
                 <MaterialIcons 
                     name={`${expanded ? 'arrow-drop-up' : 'arrow-drop-down'}`}
                     size={30}
