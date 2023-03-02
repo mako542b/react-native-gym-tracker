@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { View, Text, FlatList, Pressable, Button } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 
-
 export default function ({ group, setModal, setExercise }) {
 
     const [rollUp, setRollUp] = useState()
