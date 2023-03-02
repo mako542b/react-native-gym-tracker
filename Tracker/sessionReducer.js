@@ -3,74 +3,92 @@ import immer from 'immer'
 
 
 export default function(state, action) {
-    // const newState = [...state]
+
     switch(action.type){
-        case 'addSession':{
-            const newSession = {
-                date: action.payload.date, 
-                group: action.payload.group, 
-                key:idGenerator(),
-                exercises:[]
-            }
-            const newState = immer(state, draft => {
-                draft.push(newSession)
-                return draft
-            })
-            return newState
-        }
+        case 'addSession':
+            return addSession(state, action.payload)
 
-        case 'addExercise':{
-            const newExercise = {
-                name: action.payload.exercise, 
-                key:idGenerator(), 
-                sets:[],
-                timestamp: new Date().getTime(),
-            }
-            const newState = immer(state, draft => {
-                const modSession = draft.find(s => s.key === action.payload.sessionKey)
-                modSession.exercises.push(newExercise)
-                return draft
-            })
-            return newState
-        }
+        case 'addExercise':
+            return addExercise(state, action.payload)
 
-        case 'addSet':{
-            const newSet = {
-                ...action.payload.setInfo, 
-                key:idGenerator(), 
-                timestamp: new Date().getTime(),
-            }
-            const newState = immer(state, draft => {
-                const modSession = draft.find(s => s.key === action.payload.sessionKey)
-                const modExercise = modSession.exercises.find(e => e.key === action.payload.exerciseKey)
-                modExercise.sets.push(newSet)
-                return draft
-            })
-            return newState 
-        }
+        case 'addSet':
+            return addSet(state, action.payload)
+            
+        case 'editSet':
+            return editSet(state, action.payload)
 
-        case 'editSet':{
-            const newState = immer(state, draft => {
-                const modSession = draft.find(s => s.key === action.payload.sessionKey)
-                const modExercise = modSession.exercises.find(e => e.key === action.payload.exerciseKey)
-                const modSetIndex = modExercise.sets.findIndex(set => set.key === action.payload.setKey)
-                modExercise.sets[modSetIndex] = {...modExercise.sets[modSetIndex], ...action.payload.setInfo}
-                return draft
-            })
-            return newState
-        }
-
-        case 'deleteSet':{
-            const newState = immer(state, draft => {
-                const modSession = draft.find(s => s.key === action.payload.sessionKey)
-                const modExercise = modSession.exercises.find(e => e.key === action.payload.exerciseKey)
-                modExercise.sets = modExercise.sets.filter(set => set.key !== action.payload.setKey)
-                return draft
-            })
-            return newState
-        }
+        case 'deleteSet':
+            return deleteSet(state, action.payload)
 
         default:
             return state
     }
+}
+
+
+
+
+function addSession(state, payload){
+    const newSession = {
+        date: payload.date, 
+        group: payload.group, 
+        key:idGenerator(),
+        exercises:[]
+    }
+    const newState = immer(state, draft => {
+        draft.push(newSession)
+        return draft
+    })
+    return newState
+}
+
+function addExercise(state, payload) {
+    const newExercise = {
+        name: payload.exercise, 
+        key:idGenerator(), 
+        sets:[],
+        timestamp: new Date().getTime(),
+    }
+    const newState = immer(state, draft => {
+        const modSession = draft.find(s => s.key === payload.sessionKey)
+        modSession.exercises.push(newExercise)
+        return draft
+    })
+    return newState
+}
+
+function addSet(state, payload) {
+    const newSet = {
+        ...payload.setInfo, 
+        key:idGenerator(), 
+        timestamp: new Date().getTime(),
+    }
+    const newState = immer(state, draft => {
+        const modSession = draft.find(s => s.key === payload.sessionKey)
+        const modExercise = modSession.exercises.find(e => e.key === payload.exerciseKey)
+        modExercise.sets.push(newSet)
+        return draft
+    })
+    return newState 
+}
+
+function editSet(state, payload) {
+    const newState = immer(state, draft => {
+        const modSession = draft.find(s => s.key === payload.sessionKey)
+        const modExercise = modSession.exercises.find(e => e.key === payload.exerciseKey)
+        const modSetIndex = modExercise.sets.findIndex(set => set.key === payload.setKey)
+        modExercise.sets[modSetIndex] = {...modExercise.sets[modSetIndex], ...payload.setInfo}
+        return draft
+    })
+    return newState
+}
+
+function deleteSet(state, payload) {
+    const newState = immer(state, draft => {
+        const modSession = draft.find(s => s.key === payload.sessionKey)
+        const modExercise = modSession.exercises.find(e => e.key === payload.exerciseKey)
+        modExercise.sets = modExercise.sets.filter(set => set.key !== payload.setKey)
+        return draft
+    })
+    return newState
 }

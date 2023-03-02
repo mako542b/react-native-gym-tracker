@@ -22,7 +22,7 @@ export default function ({ set, index, exerciseKey, sessionKey, sessionsDispatch
  
  
     return (
-        <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
+        <View style={{flexDirection:'row', alignItems:'center', backgroundColor: '#5bb', padding:15, borderRadius:6, marginVertical:5}}>
             <Text style={{marginEnd:10, fontWeight:'bold'}}>Set {index}:</Text>
             <View style={{flex:1, marginRight:10}}>
                 {set.reps && <SetInfo label='Reps' info={set.reps}/>}

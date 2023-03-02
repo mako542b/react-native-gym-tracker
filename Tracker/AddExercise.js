@@ -14,6 +14,7 @@ export default function ({ sessionKey, sessionsDispatch }) {
         sessionsDispatch({type:'addExercise', payload: {exercise, sessionKey}})
         setExercise('')
         setModal(false)
+        setExpanded(false)
     }
 
     return (

@@ -6,6 +6,10 @@ import SessionWrap from './SessionWrap'
 import { MaterialIcons } from '@expo/vector-icons'
 import sessionsReducer from './sessionReducer'
 
+function getTime(date) {
+    return new Date(...date.split('.').reverse()).getTime()
+}
+
 
 export default function ({ navigation }) {
 
@@ -16,14 +20,30 @@ export default function ({ navigation }) {
 
 
     return(
-        <ScrollView>
+        <ScrollView style={{backgroundColor: '#6d8'}}>
             <Pressable 
-                    style={{alignSelf:'center', backgroundColor:'#eee', padding:10, borderRadius: 14,}}
-                    onPress={() => setModal(true)}
-                >
-                    <MaterialIcons name='add'  size={35}/>
-                </Pressable>
-            {allSessions.map(session => (
+                style={{alignSelf:'flex-start', backgroundColor:'#49e', padding:10, borderRadius: 14, flexDirection:'row', margin:9, justifyContent:'center'}}
+                onPress={() => setModal(true)}
+            >
+                <MaterialIcons name='add'  size={20}/>
+                <Text>new session</Text>
+            </Pressable>
+
+            <View style={{backgroundColor:'#49e', padding:15}}>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Text style={{fontSize:20}}>Date: </Text>
+                    <Text style={{fontSize:20}}>{date} </Text>
+                    <MaterialIcons name='date-range' size={30}/>
+
+                </View>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Text style={{fontSize:20}}>Tags: </Text>
+                    <MaterialIcons name='add' size={30}/>
+
+                </View>
+            </View>
+
+            {allSessions.slice().sort((a,b) => getTime(b.date) - getTime(a.date)).map(session => (
                 <SessionWrap 
                     session={session} 
                     key={session.key} 
@@ -31,7 +51,7 @@ export default function ({ navigation }) {
                 />
             ))}
 
-            <Modal visible={modal}>
+            {/* <Modal visible={modal}>
                 <Button 
                     title='cancel'
                     onPress={() => setModal(false)}
@@ -66,7 +86,7 @@ export default function ({ navigation }) {
                         setModal(false)
                     }}
                 />
-            </Modal>
+            </Modal> */}
 
         </ScrollView>
     )

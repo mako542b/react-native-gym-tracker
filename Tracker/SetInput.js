@@ -5,7 +5,7 @@ export default function({ label, setter, getter, keyboard }) {
         <View style={{flexDirection: 'row', alignItems:'center',}}>
             <Text>{label}:</Text>
             <TextInput 
-                style={{backgroundColor:'#fef', marginHorizontal:8, marginVertical:4, borderRadius:8, paddingHorizontal:4, flex:1}}
+                style={{backgroundColor:'#fef', marginHorizontal:8, marginVertical:4, borderRadius:6, padding:4, flex:1}}
                 inputMode={keyboard}
                 value={getter}
                 onChangeText={(value) => setter(value)}

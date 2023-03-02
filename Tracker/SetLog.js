@@ -25,7 +25,7 @@ export default function ({ cancelFn, exerciseKey, sessionKey, sessionsDispatch, 
     }
 
     return (
-        <View style={{flexDirection:'row', alignItems:'center', borderTopColor: '#222', borderTopWidth:1, padding:5}}>
+        <View style={{flexDirection:'row', alignItems:'center', backgroundColor: '#7dd', padding:15,}}>
             <Text style={{marginEnd:10, fontWeight:'bold'}}>Set {index}:</Text>
             <View style={{flex:1}}>
                 <SetInput 
@@ -37,19 +37,19 @@ export default function ({ cancelFn, exerciseKey, sessionKey, sessionsDispatch, 
                 <SetInput 
                     getter={weight}
                     setter={setWeight}
-                    label='Weight'
+                    label='Weight  (kg)'
                     keyboard='numeric'
                 />
                 <SetInput 
                     getter={duration}
                     setter={setDuration}
-                    label='Duration'
+                    label='Duration (min)'
                     keyboard='numeric'
                 />
                 <SetInput 
                     getter={others}
                     setter={setOthers}
-                    label='Others'
+                    label='Other'
                     keyboard='text'
                 />
             </View>
