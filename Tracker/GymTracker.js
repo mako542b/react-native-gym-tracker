@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Button, FlatList, Pressable, ScrollView, Modal, TextInput } from 'react-native'
 import { useState, useReducer } from 'react'
 import idGenerator from '../Utils/idGenerator'
-import AddSession from './AddSession'
+import ManageSession from './ManageSession'
 import SessionWrap from './SessionWrap'
 import { MaterialIcons } from '@expo/vector-icons'
 import sessionsReducer from './sessionReducer'
@@ -17,7 +17,7 @@ export default function ({ navigation }) {
     const [dateModal, setDateModal] = useState(false)
 
     const onChange = (event, selectedDate) => {
-        // const currentDate = selectedDate;
+        const currentDate = selectedDate;
         setDate(selectedDate);
       };
 

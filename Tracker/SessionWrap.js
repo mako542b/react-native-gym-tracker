@@ -1,4 +1,4 @@
-import AddSession from './AddSession'
+import ManageSession from './ManageSession'
 import { useState } from 'react'
 import { View, Pressable, Text } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -23,7 +23,7 @@ export default function({ session, sessionsDispatch }) {
                     style={{position:'absolute', right:5, }}
                 />    
             </Pressable> 
-            {expanded ? <AddSession session={session} sessionsDispatch={sessionsDispatch}/> : null}
+            {expanded ? <ManageSession session={session} sessionsDispatch={sessionsDispatch}/> : null}
         </View>
     )
 }
