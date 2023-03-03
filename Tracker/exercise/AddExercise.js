@@ -1,8 +1,9 @@
-import { exercisesList } from "../Exercises/exercisesList";
+import { exercisesList } from "../../data/exercisesList";
 import { useState } from "react";
 import { View, Text, Button, Modal, FlatList, TextInput, Pressable } from 'react-native'
 import ChooseGroup from "./ChooseGroup";
 import { MaterialIcons } from '@expo/vector-icons'
+import ActionButtons from "./ActionButtons";
 
 export default function ({ sessionKey, sessionsDispatch }) {
 
@@ -19,36 +20,31 @@ export default function ({ sessionKey, sessionsDispatch }) {
 
     return (
         <View>
-            {expanded ? (<View style={{ backgroundColor:'#eee', padding: 20}}>
-                <View style={{flexDirection: 'column', alignItems: 'center'}}>
+            {expanded ? (
+                <View style={{  padding: 20, flexDirection: 'column', alignItems: 'center'}}>
                     <View style={{ alignItems: 'center', flexDirection:'row', justifyContent:'space-between', alignSelf:'stretch'}}>
                         <Text style={{fontSize: 20,}}>Name:</Text>
-                        <Pressable
-                            onPress={() => setExpanded(false)}
-                        >
-                            <Text>cancel</Text>
+                        <Pressable onPress={() => {
+                            setExpanded(false)
+                            setExercise('')
+                        }}>
+                            <Text style={{color:'#b22'}}>cancel</Text>
                         </Pressable>
                     </View>
                     <TextInput 
-                        style={{backgroundColor: '#fff', width: '100%', padding: 6, fontSize:20}}
+                        style={{backgroundColor: '#eee', width: '100%', padding: 6, fontSize:20, borderRadius:8, margin:4}}
                         value={exercise}
                         onChangeText={(value) => setExercise(value)}
                     />
-                    <View style={{flexDirection: 'row', justifyContent:'space-between', width:'100%'}}>
-                        <Button 
-                            title="Choose from popular"
-                            onPress={() => setModal(true)}
-                        />
-                        <Button 
-                            title="Add"
-                            onPress={addExercise}
-                        />
-                    </View>
+                    <ActionButtons 
+                        addExercise={addExercise}
+                        setModal={setModal}
+                    />
                 </View>
-            </View>) : (
+            ) : (
                 <Pressable
                     onPress={() => setExpanded(true)}
-                    style={{padding: 10, flexDirection:'row'}}
+                    style={{padding: 15, flexDirection:'row', alignSelf:'flex-start'}}
                 >
                     <MaterialIcons name='add' size={20}/>
                     <Text>new exercise</Text>

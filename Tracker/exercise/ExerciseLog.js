@@ -1,7 +1,7 @@
-import { View, Button, FlatList, Text, TextInput, Pressable } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import SetLog from './SetLog'
-import ReadySet from './ReadySet'
+import SetLog from '../set/SetLog'
+import ReadySet from '../set/ReadySet'
 import { useState } from 'react'
 
 export default function ({ exercise, sessionsDispatch, sessionKey }) {
@@ -11,7 +11,7 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
 
 
     return (
-        <View style={{ padding: 10, backgroundColor: '#ff9', marginVertical:3, borderRadius:7}}>
+        <View style={{ padding: 10, backgroundColor: '#8aa', marginVertical:3, borderRadius:7}}>
 
             <Pressable 
                 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}

@@ -1,6 +1,5 @@
 import { View, Button } from 'react-native'
 
-
 export default function({ sessionsDispatch, setAddSession, date, tags, setTags }) {
     return (
         <View style={{flexDirection:'row', alignSelf:'flex-end'}}>

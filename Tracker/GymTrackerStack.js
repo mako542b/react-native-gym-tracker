@@ -1,7 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import GymTracker from './GymTracker'
-import TrackerHistory from './TrackerHistory'
-import ManageSession from './ManageSession'
 
 const TrackerStack = createNativeStackNavigator()
 

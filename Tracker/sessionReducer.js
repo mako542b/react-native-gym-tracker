@@ -25,7 +25,6 @@ export default function(state, action) {
     }
 }
 
-// new Date().toLocaleDateString
 
 function addSession(state, payload){
     const newSession = {
