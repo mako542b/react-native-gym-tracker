@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import ExerciseLog from "../exercise/ExerciseLog";
 import AddExercise from "../exercise/AddExercise";
+import DeleteSession from "./DeleteSession";
 
 function sortExercises(exercises) {
     return exercises.slice().sort((a,b) => b.timestamp - a.timestamp)
@@ -9,7 +10,7 @@ function sortExercises(exercises) {
 export default function({ session, sessionsDispatch }) {
 
     return (
-            <View style={{borderTopColor:'#555', borderTopWidth:1, paddingBottom:12, paddingHorizontal:10}}>
+            <View style={{borderTopColor:'#888', borderTopWidth:1, paddingBottom:12, paddingHorizontal:10}}>
                 <AddExercise sessionKey={session.key} sessionsDispatch={sessionsDispatch}/>
                 {session?.exercises && sortExercises(session.exercises).map(exercise => (
                     <ExerciseLog 

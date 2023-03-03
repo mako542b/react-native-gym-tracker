@@ -3,6 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import SetLog from '../set/SetLog'
 import ReadySet from '../set/ReadySet'
 import { useState } from 'react'
+import DeleteExercise from './DeleteExercise'
 
 export default function ({ exercise, sessionsDispatch, sessionKey }) {
 
@@ -11,7 +12,7 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
 
 
     return (
-        <View style={{ padding: 10, backgroundColor: '#8aa', marginVertical:3, borderRadius:7}}>
+        <View style={{ padding: 10, backgroundColor: '#8aa', marginVertical:7, borderRadius:7}}>
 
             <Pressable 
                 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}
@@ -31,13 +32,17 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
                         action='addSet'
                     /> 
                 ) : (
-                    <Pressable 
-                        style={{flexDirection:'row', alignItems:'center', padding:0, alignSelf:'flex-end'}}
-                        onPress={() => setAddSet(prev => !prev)}
-                    >
-                        <Text>Add set</Text>
-                        <MaterialIcons name='add' size={20}/>
-                    </Pressable>
+                    <View style={{justifyContent:'space-between', alignItems:'center', flexDirection:'row'}}>
+                        <DeleteExercise sessionKey={sessionKey} sessionsDispatch={sessionsDispatch} exerciseKey={exercise.key}/>
+                        <Pressable 
+                            style={{flexDirection:'row', alignItems:'center', padding:0 }}
+                            onPress={() => setAddSet(prev => !prev)}
+                        >
+                            <Text>Add set</Text>
+                            <MaterialIcons name='add' size={20}/>
+                        </Pressable>
+
+                    </View>
                 )}
 
                 {exercise.sets?.slice().sort((a,b) => b.timestamp - a.timestamp).map((item, index) => (

@@ -4,6 +4,7 @@ import { View, Text, Button, Modal, FlatList, TextInput, Pressable } from 'react
 import ChooseGroup from "./ChooseGroup";
 import { MaterialIcons } from '@expo/vector-icons'
 import ActionButtons from "./ActionButtons";
+import DeleteSession from "../session/DeleteSession";
 
 export default function ({ sessionKey, sessionsDispatch }) {
 
@@ -42,22 +43,27 @@ export default function ({ sessionKey, sessionsDispatch }) {
                     />
                 </View>
             ) : (
-                <Pressable
-                    onPress={() => setExpanded(true)}
-                    style={{padding: 15, flexDirection:'row', alignSelf:'flex-start'}}
-                >
-                    <MaterialIcons name='add' size={20}/>
-                    <Text>new exercise</Text>
-                </Pressable>
+                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                    <DeleteSession sessionKey={sessionKey} sessionsDispatch={sessionsDispatch} />
+                    <Pressable
+                        onPress={() => setExpanded(true)}
+                        style={{padding: 15, flexDirection:'row', alignSelf:'flex-start'}}
+                    >
+                        <MaterialIcons name='add' size={20}/>
+                        <Text>new exercise</Text>
+                    </Pressable>
+                </View>
             )}
 
-            <Modal visible={modal}>
-                    <FlatList 
+            <Modal visible={modal} >
+                <View style={{backgroundColor:'#ddd', height:'100%'}}>
+                    <FlatList
                         data={exercisesList}
                         renderItem={({ item }) => (
                             <ChooseGroup group={item} setExercise={setExercise} setModal={setModal}/>
                         )}
                     />
+                </View>
             </Modal>
         </View>
     )

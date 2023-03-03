@@ -6,11 +6,12 @@ export default function ({ cancelFn, exerciseKey, sessionKey, sessionsDispatch, 
 
     const [weight, setWeight] = useState(() => set?.weight ? set.weight : null)
     const [duration, setDuration] = useState(() => set?.duration ? set.duration : null)
+    const [distance, setDistance] = useState(() => set?.distance ? set.distance : null)
     const [reps, setReps] = useState(() => set?.reps ? set.reps : null)
     const [others, setOthers] = useState(() => set?.others ? set.others : null)
 
     function createSet() {
-        const setInfo = {weight, duration, reps, others}
+        const setInfo = {weight, duration, reps, distance, others}
         const payload = {sessionKey, exerciseKey, setInfo, setKey: set?.key}
         sessionsDispatch({type: action, payload})
         cancelFn(false)
@@ -44,6 +45,12 @@ export default function ({ cancelFn, exerciseKey, sessionKey, sessionsDispatch, 
                     getter={duration}
                     setter={setDuration}
                     label='Duration (min)'
+                    keyboard='numeric'
+                />
+                <SetInput 
+                    getter={distance}
+                    setter={setDistance}
+                    label='Distance (m)'
                     keyboard='numeric'
                 />
                 <SetInput 

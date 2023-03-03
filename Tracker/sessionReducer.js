@@ -20,6 +20,12 @@ export default function(state, action) {
         case 'deleteSet':
             return deleteSet(state, action.payload)
 
+        case 'deleteSession':
+            return deleteSession(state, action.payload)
+
+        case 'deleteExercise':
+            return deleteExercise(state, action.payload)
+
         default:
             return state
     }
@@ -86,6 +92,20 @@ function deleteSet(state, payload) {
         const modSession = draft.find(s => s.key === payload.sessionKey)
         const modExercise = modSession.exercises.find(e => e.key === payload.exerciseKey)
         modExercise.sets = modExercise.sets.filter(set => set.key !== payload.setKey)
+        return draft
+    })
+    return newState
+}
+
+function deleteSession(state, payload) {
+    const newState = immer(state, draft => draft.filter(session => session.key !== payload.sessionKey))
+    return newState
+}
+
+function deleteExercise(state, payload) {
+    const newState = immer(state, draft => {
+        const modSession = draft.find(session => session.key === payload.sessionKey)
+        modSession.exercises = modSession.exercises.filter(exercise => exercise.key !== payload.exerciseKey)
         return draft
     })
     return newState

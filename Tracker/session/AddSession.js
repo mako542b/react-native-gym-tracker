@@ -11,9 +11,6 @@ export default function ({ sessionsDispatch }) {
     const [date, setDate] = useState(() => new Date())
     const [tags, setTags] = useState([])
 
-    
-
-
     return (
         <View>
             {!addSession ? (

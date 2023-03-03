@@ -9,7 +9,7 @@ export default function({ session, sessionsDispatch }) {
     const [expanded, setExpanded] = useState(false)
 
     return (
-        <View style={{marginVertical:5, backgroundColor:'#aaa', borderRadius:10}}>
+        <View style={{margin: 6, backgroundColor:'#aaa', borderRadius:10}}>
             <Pressable
                 onPress={() => setExpanded(prev => !prev)}
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
@@ -24,13 +24,13 @@ export default function({ session, sessionsDispatch }) {
 
                     </View>
                 )}
-                
                 <MaterialIcons 
                     name={`${expanded ? 'arrow-drop-up' : 'arrow-drop-down'}`}
                     size={30}
                     style={{position:'absolute', right:5, }}
                 />    
             </Pressable> 
+                
             {expanded ? <ManageSession session={session} sessionsDispatch={sessionsDispatch}/> : null}
         </View>
     )
