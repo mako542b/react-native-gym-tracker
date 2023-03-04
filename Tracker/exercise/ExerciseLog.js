@@ -12,7 +12,7 @@ export default function ({ exercise, sessionsDispatch, sessionKey }) {
 
 
     return (
-        <View style={{ padding: 10, backgroundColor: '#8aa', marginVertical:7, borderRadius:7}}>
+        <View style={{ padding: 10, backgroundColor: '#ddd', marginVertical:7, borderRadius:7}}>
 
             <Pressable 
                 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}

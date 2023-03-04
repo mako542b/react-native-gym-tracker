@@ -26,10 +26,12 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
                                 <FilterDate date={endDate} dateSetter={setEndDate} label='end:'/>
                             </View>
                         </View>
+
                         <View style={{alignItems:'center', justifyContent:'center', padding:10}}>
                             <Text style={{fontSize:20}}>Filter by tags:</Text>
                             <TagsPicker tags={tags} setTags={setTags}/>
                         </View>
+                        
                         <Text style={{fontSize:20, alignSelf:'center'}}>Sort by:</Text>
                         <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
                             <Pressable
@@ -48,6 +50,7 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
                             </Pressable>
                         </View>
                     </ScrollView>
+
                         <View style={{marginTop:'auto'}}>
                             <Button onPress={() => setModal(false)} title='submit'/>
                         </View>

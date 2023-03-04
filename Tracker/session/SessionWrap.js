@@ -11,13 +11,13 @@ export default function({ session, sessionsDispatch }) {
     const dateOptions = {weekday: 'short', day: '2-digit', month: '2-digit', year:'numeric'}
 
     return (
-        <View style={{margin: 6, backgroundColor:'#aaa', borderRadius:10}}>
+        <View style={{margin: 10, backgroundColor:'#eee', borderRadius:10}}>
             <Pressable
                 onPress={() => setExpanded(prev => !prev)}
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
             >   
                 
-                <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
+                <Text style={{fontSize:25, fontWeight:'bold', color:'#111'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
                 {session?.tags?.length > 0 && (
                     <View style={{flexDirection:'row', width:'80%', flexWrap:'wrap', justifyContent:'center'}}>
                         {session.tags.map(tag => (
@@ -27,7 +27,7 @@ export default function({ session, sessionsDispatch }) {
                     </View>
                 )}
                 <MaterialIcons 
-                    name={`${expanded ? 'arrow-drop-up' : 'arrow-drop-down'}`}
+                    name={expanded ? 'expand-less' : 'expand-more'}
                     size={30}
                     style={{position:'absolute', right:5, }}
                 />    

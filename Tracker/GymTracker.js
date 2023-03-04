@@ -1,10 +1,11 @@
-import { View,  ScrollView } from 'react-native'
+import { View,  ScrollView, Text, TextInput } from 'react-native'
 import { useState, useReducer, useMemo } from 'react'
 import SessionWrap from './session/SessionWrap'
 import sessionReducer from './sessionReducer'
 import AddSession from './session/AddSession'
 import FilterSession from './session/FilterSession'
 import { filterAndSort } from '../Utils/filter'
+import ResultsFor from './ResultsFor'
 
 export default function ({ navigation }) {
 
@@ -15,6 +16,8 @@ export default function ({ navigation }) {
     const [tags, setTags] = useState([])
     const [byNewest, setByNewest] = useState(true)
 
+    const isFiltered = startDate || endDate || tags?.length > 0
+
     const filteredSessions = useMemo(() => {
         return filterAndSort(allSessions, {startDate, endDate, tags, byNewest})
     }, [allSessions, startDate, endDate, tags, byNewest])
@@ -22,7 +25,9 @@ export default function ({ navigation }) {
     
     
     return(
-        <ScrollView style={{backgroundColor: '#ddd'}}>
+        <ScrollView style={{backgroundColor: '#fff'}}>
+                <TextInput />
+
             <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                 <AddSession sessionsDispatch={sessionsDispatch} addSession={addSession} setAddSession={setAddSession}/>
                 {!addSession ? (
@@ -39,7 +44,12 @@ export default function ({ navigation }) {
                     />
                 ) : null}
             </View>
-
+            {isFiltered ? (
+                <ResultsFor 
+                    startDate={startDate}
+                    endDate={endDate}
+                    tags={tags}
+                />) : null}
             {filteredSessions?.map(session => (
                 <SessionWrap 
                     session={session} 

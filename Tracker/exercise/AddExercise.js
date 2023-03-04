@@ -33,7 +33,7 @@ export default function ({ sessionKey, sessionsDispatch }) {
                         </Pressable>
                     </View>
                     <TextInput 
-                        style={{backgroundColor: '#eee', width: '100%', padding: 6, fontSize:20, borderRadius:8, margin:4}}
+                        style={{backgroundColor: '#fff', width: '100%', padding: 6, fontSize:20, borderRadius:8, margin:4}}
                         value={exercise}
                         onChangeText={(value) => setExercise(value)}
                     />
