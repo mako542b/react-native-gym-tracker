@@ -45,12 +45,12 @@ export default function ({ tags, setTags }) {
             </View>
 
             <View style={{flexDirection:'row', justifyContent:'space-between', margin:10,}}>
-                {/* <TextInput 
+                <TextInput 
                     placeholder='add here...'
                     style={{fontSize:16, borderColor:'#222', borderWidth:1, borderRadius:6, paddingHorizontal:6, flex:1}}
                     value={newTag}
                     onChangeText={val => setNewTag(val)}
-                /> */}
+                />
                 <Button 
                     title='add'
                     onPress={handleNewTag}

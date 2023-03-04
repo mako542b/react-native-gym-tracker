@@ -13,6 +13,7 @@ export default function ({ sessionKey, sessionsDispatch }) {
     const [expanded, setExpanded] = useState(false)
 
     function addExercise() {
+        // if(exercise?.trim() === '') return
         sessionsDispatch({type:'addExercise', payload: {exercise, sessionKey}})
         setExercise('')
         setModal(false)
@@ -32,7 +33,8 @@ export default function ({ sessionKey, sessionsDispatch }) {
                             <Text style={{color:'#b22'}}>cancel</Text>
                         </Pressable>
                     </View>
-                    <TextInput 
+                    <TextInput
+                        
                         style={{backgroundColor: '#fff', width: '100%', padding: 6, fontSize:20, borderRadius:8, margin:4}}
                         value={exercise}
                         onChangeText={(value) => setExercise(value)}

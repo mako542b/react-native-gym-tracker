@@ -11,13 +11,13 @@ export default function({ session, sessionsDispatch }) {
     const dateOptions = {weekday: 'short', day: '2-digit', month: '2-digit', year:'numeric'}
 
     return (
-        <View style={{margin: 10, backgroundColor:'#eee', borderRadius:10}}>
+        <View style={{margin: 10, backgroundColor:'#eee', borderRadius:10, padding:10}}>
             <Pressable
                 onPress={() => setExpanded(prev => !prev)}
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
             >   
                 
-                <Text style={{fontSize:25, fontWeight:'bold', color:'#111'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
+                <Text style={{fontSize:25, color:'#111'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
                 {session?.tags?.length > 0 && (
                     <View style={{flexDirection:'row', width:'80%', flexWrap:'wrap', justifyContent:'center'}}>
                         {session.tags.map(tag => (

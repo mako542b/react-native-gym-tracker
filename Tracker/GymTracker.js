@@ -26,8 +26,6 @@ export default function ({ navigation }) {
     
     return(
         <ScrollView style={{backgroundColor: '#fff'}}>
-                <TextInput />
-
             <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
                 <AddSession sessionsDispatch={sessionsDispatch} addSession={addSession} setAddSession={setAddSession}/>
                 {!addSession ? (

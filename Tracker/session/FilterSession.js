@@ -9,6 +9,12 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
 
     const [modal, setModal] = useState(false)
 
+    function clearFilters() {
+        setStartDate(null)
+        setEndDate(null)
+        setTags([])
+    }
+
 
     return (
         <View>
@@ -49,6 +55,12 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
                                 <Text style={{fontSize:17}}> Oldest</Text>
                             </Pressable>
                         </View>
+                        <Pressable 
+                            style={{alignSelf:'center', margin:25, paddingVertical:10, paddingHorizontal:20, backgroundColor:'#eee', borderRadius:10}}
+                            onPress={clearFilters}
+                        >
+                            <Text>Clear all</Text>
+                        </Pressable>
                     </ScrollView>
 
                         <View style={{marginTop:'auto'}}>

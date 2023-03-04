@@ -5,7 +5,7 @@ export default function({ startDate, endDate, tags }) {
         <View style={{flexDirection:'row', alignItems:'center'}}>
             <Text style={{flex:1, textAlign:'right', fontSize:20}}>Filters:</Text>
             <View style={{alignItems:'flex-end', flex:2, marginRight:15}}>
-                {startDate || endDate && (
+                {(startDate || endDate) && (
                     <View style={{flexDirection:'row'}}>
                         {startDate ? (
                             <Text style={{padding:5}}>from {startDate.toLocaleDateString()}</Text>
