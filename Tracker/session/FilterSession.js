@@ -1,24 +1,14 @@
 import { useState } from 'react'
-import { View, Text, Pressable, Modal, Button } from 'react-native'
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
+import { View, Text, Pressable, Modal, Button, TextInput, ScrollView } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
+import FilterDate from './FilterDate'
+import TagsPicker from './TagsPicker'
 
 
-
-export default function({ startDate, setStartDate, endDate, setEndDate }) {
+export default function({ startDate, setStartDate, endDate, setEndDate, tags, setTags, byNewest, setByNewest }) {
 
     const [modal, setModal] = useState(false)
 
-    function showDatepicker (date, dateSetter) {
-        DateTimePickerAndroid.open({
-            value: date ? date : new Date(),
-            onChange: ((e, newDate) => {
-                if(e.type === 'dismissed') return
-                dateSetter(newDate)
-            }),
-            mode: 'date',
-        });
-    }
 
     return (
         <View>
@@ -27,56 +17,41 @@ export default function({ startDate, setStartDate, endDate, setEndDate }) {
             </Pressable>
 
             <Modal visible={modal}>
-                <Button onPress={() => setModal(false)} title='off'/>
-
-                <View style={{alignItems:'center', justifyContent:'center'}}>
-                    <Text>Filter by date:</Text>
-
-                    <View style={{ alignSelf:'stretch', justifyContent:'space-between', padding:10}}>
-                        <View style={{flexDirection:'row', alignItems:'center'}}>
-                            <Text>Start:</Text>
-                            <Pressable
-                                onPress={() => showDatepicker(startDate, setStartDate)}
-                                style={{padding:10}}
-                            >
-                                <MaterialIcons name='date-range' size={30}/>
-                            </Pressable>
-                            {startDate ? (
-                                <View style={{flexDirection:'row',alignItems:'center'}}>
-                                    <Text>{startDate.toLocaleDateString()}</Text>
-                                    <Pressable 
-                                        style={{padding:6}}
-                                        onPress={() => setStartDate(null)}
-                                    >
-                                        <MaterialIcons name='clear' size={25}/>
-                                    </Pressable>
-                                </View>) : null}
-
+                <View style={{height:'100%'}}>
+                    <ScrollView>
+                        <View style={{alignItems:'center', justifyContent:'center', padding:10}}>
+                            <Text style={{fontSize:20}}>Filter by date:</Text>
+                            <View style={{ alignSelf:'stretch', justifyContent:'space-between', paddingHorizontal:10}}>
+                                <FilterDate date={startDate} dateSetter={setStartDate} label='start:'/>
+                                <FilterDate date={endDate} dateSetter={setEndDate} label='end:'/>
+                            </View>
                         </View>
-
-                        <View style={{flexDirection:'row', alignItems:'center'}}>
-                            <Text>  End:</Text>
-                            <Pressable
-                                onPress={() => showDatepicker(endDate, setEndDate)}
-                                style={{padding:10}}
-                            >
-                                <MaterialIcons name='date-range' size={30}/>
-                            </Pressable>
-                            {endDate ? (
-                                <View style={{flexDirection:'row',alignItems:'center'}}>
-                                    <Text>{endDate.toLocaleDateString()}</Text>
-                                    <Pressable 
-                                        style={{padding:6}}
-                                        onPress={() => setEndDate(null)}
-                                    >
-                                        <MaterialIcons name='clear' size={25}/>
-                                    </Pressable>
-                                </View>) : null}
+                        <View style={{alignItems:'center', justifyContent:'center', padding:10}}>
+                            <Text style={{fontSize:20}}>Filter by tags:</Text>
+                            <TagsPicker tags={tags} setTags={setTags}/>
                         </View>
-                    </View>
-
+                        <Text style={{fontSize:20, alignSelf:'center'}}>Sort by:</Text>
+                        <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
+                            <Pressable
+                                onPress={() => setByNewest(true)}
+                                style={{flexDirection:'row', alignItems:'center',  padding:20}}
+                            >
+                                <Text style={{fontSize:17}}>Newest </Text>
+                                { byNewest ? <MaterialIcons name='check' size={22}/> : null}
+                            </Pressable>
+                            <Pressable
+                                onPress={() => setByNewest(false)}
+                                style={{flexDirection:'row', alignItems:'center',  padding:20}}
+                            >
+                                { !byNewest ? <MaterialIcons name='check' size={22}/> : null}
+                                <Text style={{fontSize:17}}> Oldest</Text>
+                            </Pressable>
+                        </View>
+                    </ScrollView>
+                        <View style={{marginTop:'auto'}}>
+                            <Button onPress={() => setModal(false)} title='submit'/>
+                        </View>
                 </View>
-
             </Modal>
         </View>
     )

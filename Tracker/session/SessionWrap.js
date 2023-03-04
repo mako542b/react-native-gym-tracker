@@ -8,6 +8,8 @@ export default function({ session, sessionsDispatch }) {
 
     const [expanded, setExpanded] = useState(false)
 
+    const dateOptions = {weekday: 'short', day: '2-digit', month: '2-digit', year:'numeric'}
+
     return (
         <View style={{margin: 6, backgroundColor:'#aaa', borderRadius:10}}>
             <Pressable
@@ -15,7 +17,7 @@ export default function({ session, sessionsDispatch }) {
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
             >   
                 
-                <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date.toLocaleDateString()}</Text>
+                <Text style={{fontSize:25, fontWeight:'bold', color:'#722'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
                 {session?.tags?.length > 0 && (
                     <View style={{flexDirection:'row', width:'80%', flexWrap:'wrap', justifyContent:'center'}}>
                         {session.tags.map(tag => (

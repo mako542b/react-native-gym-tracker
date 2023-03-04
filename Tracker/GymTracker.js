@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet, Button, FlatList, Pressable, ScrollView, Modal, TextInput } from 'react-native'
-import { useState, useReducer } from 'react'
+import { View,  ScrollView } from 'react-native'
+import { useState, useReducer, useMemo } from 'react'
 import SessionWrap from './session/SessionWrap'
 import sessionReducer from './sessionReducer'
 import AddSession from './session/AddSession'
 import FilterSession from './session/FilterSession'
-import { filterByDate } from '../Utils/filter'
+import { filterAndSort } from '../Utils/filter'
 
 export default function ({ navigation }) {
 
@@ -12,6 +12,12 @@ export default function ({ navigation }) {
     const [addSession, setAddSession] = useState(false)
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
+    const [tags, setTags] = useState([])
+    const [byNewest, setByNewest] = useState(true)
+
+    const filteredSessions = useMemo(() => {
+        return filterAndSort(allSessions, {startDate, endDate, tags, byNewest})
+    }, [allSessions, startDate, endDate, tags, byNewest])
 
     
     
@@ -25,12 +31,16 @@ export default function ({ navigation }) {
                         endDate={endDate}
                         setEndDate={setEndDate}
                         startDate={startDate}
-                        setStartDate={setStartDate}    
+                        setStartDate={setStartDate}
+                        tags={tags} 
+                        setTags={setTags}
+                        byNewest={byNewest}
+                        setByNewest={setByNewest}
                     />
                 ) : null}
             </View>
 
-            {filterByDate(allSessions, {startDate, endDate})?.sort((a,b) => b.date.getTime() - a.date.getTime()).map(session => (
+            {filteredSessions?.map(session => (
                 <SessionWrap 
                     session={session} 
                     key={session.key} 
