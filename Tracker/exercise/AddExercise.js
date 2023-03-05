@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import ActionButtons from "./ActionButtons";
 import DeleteSession from "../session/DeleteSession";
 
-export default function ({ sessionKey, sessionsDispatch }) {
+export default function ({ sessionKey, sessionsDispatch, sessionDate }) {
 
     const [modal, setModal] = useState(false)
     const [exercise, setExercise] = useState('')
@@ -14,7 +14,7 @@ export default function ({ sessionKey, sessionsDispatch }) {
 
     function addExercise() {
         // if(exercise?.trim() === '') return
-        sessionsDispatch({type:'addExercise', payload: {exercise, sessionKey}})
+        sessionsDispatch({type:'addExercise', payload: {exercise, sessionKey, sessionDate}})
         setExercise('')
         setModal(false)
         setExpanded(false)

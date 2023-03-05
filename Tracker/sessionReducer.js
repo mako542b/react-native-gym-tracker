@@ -55,6 +55,7 @@ function addExercise(state, payload) {
         key:idGenerator(), 
         sets:[],
         timestamp: new Date().getTime(),
+        sessionDate: payload.sessionDate
     }
     const newState = immer(state, draft => {
         const modSession = draft.find(s => s.key === payload.sessionKey)
