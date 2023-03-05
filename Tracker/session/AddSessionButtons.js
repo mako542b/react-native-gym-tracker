@@ -7,7 +7,7 @@ export default function({ sessionsDispatch, setAddSession, date, tags, setTags }
                 <Button 
                     title='Add'
                     onPress={() => {
-                        sessionsDispatch({type:'addSession', payload: {date, tags}})
+                        sessionsDispatch({type:'addSession', payload: {date: date.getTime(), tags}})
                         setAddSession(false)
                         setTags([])
                     }}

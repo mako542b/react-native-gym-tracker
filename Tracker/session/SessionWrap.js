@@ -16,7 +16,7 @@ export default function({ session, sessionsDispatch }) {
                 onPress={() => setExpanded(prev => !prev)}
                 style={{ alignItems:'center', paddingVertical: 6, paddingHorizontal:30, justifyContent:'center'}}
             >   
-                <Text style={{fontSize:25, color:'#111'}}>{session.date.toLocaleDateString(undefined, dateOptions)}</Text>
+                <Text style={{fontSize:25, color:'#111'}}>{new Date(session.date).toLocaleDateString(undefined, dateOptions)}</Text>
                 {session?.tags?.length > 0 && (
                     <View style={{flexDirection:'row', width:'80%', flexWrap:'wrap', justifyContent:'center'}}>
                         {session.tags.map(tag => (

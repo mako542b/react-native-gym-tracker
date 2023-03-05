@@ -8,9 +8,9 @@ export function filterAndSort(array, {startDate, endDate, tags, byNewest}) {
 function sortByDate(array, byNewest) {
     return array.sort((a,b) => {
         if(byNewest){
-            return b.date.getTime() - a.date.getTime()
+            return b.date - a.date
         } else {
-            return a.date.getTime() - b.date.getTime()
+            return a.date - b.date
         }
     })
 }
@@ -18,10 +18,10 @@ function sortByDate(array, byNewest) {
 function filterByDate(array, startDate, endDate) {
     let filteredSessions = [...array]
     if(startDate) {
-        filteredSessions = filteredSessions.filter(session => session.date.getTime() >= startDate.getTime() - 1000*60*60*24)
+        filteredSessions = filteredSessions.filter(session => session.date >= startDate - 1000*60*60*24)
     }
     if(endDate) {
-        filteredSessions = filteredSessions.filter(session => session.date.getTime() <= endDate.getTime())
+        filteredSessions = filteredSessions.filter(session => session.date <= endDate)
     }
     return filteredSessions
 }

@@ -1,6 +1,7 @@
-import { View,  ScrollView, Text, TextInput } from 'react-native'
-import { useState, useReducer, useMemo } from 'react'
+import { View,  ScrollView } from 'react-native'
+import { useState, useMemo } from 'react'
 import SessionWrap from './session/SessionWrap'
+import useAsyncStorage from '../hooks/useAsyncStorage'
 import sessionReducer from './sessionReducer'
 import AddSession from './session/AddSession'
 import FilterSession from './session/FilterSession'
@@ -9,7 +10,8 @@ import ResultsFor from './ResultsFor'
 
 export default function ({ navigation }) {
 
-    const [allSessions, sessionsDispatch] = useReducer(sessionReducer, [])
+    const [allSessions, sessionsDispatch] = useAsyncStorage(sessionReducer, 'sessions', [])
+
     const [addSession, setAddSession] = useState(false)
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
@@ -19,6 +21,7 @@ export default function ({ navigation }) {
     const isFiltered = startDate || endDate || tags?.length > 0
 
     const filteredSessions = useMemo(() => {
+        if(!allSessions) return null
         return filterAndSort(allSessions, {startDate, endDate, tags, byNewest})
     }, [allSessions, startDate, endDate, tags, byNewest])
 

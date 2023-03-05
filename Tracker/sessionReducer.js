@@ -26,6 +26,9 @@ export default function(state, action) {
         case 'deleteExercise':
             return deleteExercise(state, action.payload)
 
+        case 'getInitData':
+            return action.payload.data
+
         default:
             return state
     }
