@@ -1,12 +1,10 @@
 import { View, Text, Pressable, Modal, Button, ScrollView } from "react-native"
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useMemo } from "react";
 
 
 export default function ({ sessions, setLoggedExercise }) {
 
     const [modal, setModal] = useState(false)
-    
-
     const exercisesNames = useMemo(() => {
         return sessions?.reduce((acc, session) => {
             session.exercises.forEach(exercise => {
@@ -15,7 +13,6 @@ export default function ({ sessions, setLoggedExercise }) {
             return acc
         }, {})
     }, [sessions])
-
 
     return (
         <View>

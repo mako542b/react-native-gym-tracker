@@ -7,7 +7,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 export default function({ session, sessionsDispatch }) {
 
     const [expanded, setExpanded] = useState(false)
-
     const dateOptions = {weekday: 'short', day: '2-digit', month: '2-digit', year:'numeric'}
 
     return (
@@ -29,8 +28,7 @@ export default function({ session, sessionsDispatch }) {
                     size={30}
                     style={{position:'absolute', right:5, }}
                 />    
-            </Pressable> 
-                
+            </Pressable>       
             {expanded ? <ManageSession session={session} sessionsDispatch={sessionsDispatch}/> : null}
         </View>
     )

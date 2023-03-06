@@ -1,6 +1,6 @@
 import { exercisesList } from "../../data/exercisesList";
 import { useState } from "react";
-import { View, Text, Button, Modal, FlatList, TextInput, Pressable } from 'react-native'
+import { View, Text, Modal, FlatList, TextInput, Pressable } from 'react-native'
 import ChooseGroup from "./ChooseGroup";
 import { MaterialIcons } from '@expo/vector-icons'
 import ActionButtons from "./ActionButtons";

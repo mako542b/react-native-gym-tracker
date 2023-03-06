@@ -1,14 +1,10 @@
-import { View, Button, Modal, Text } from 'react-native'
+import { View, Button, Modal } from 'react-native'
 import { useState } from 'react'
 import StatsModal from './StatsModal'
 
 export default function({ exercise }) {
 
     const [modal, setModal] = useState(false)
-
-
-
-
 
     return (
         <View>

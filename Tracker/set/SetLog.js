@@ -1,4 +1,4 @@
-import { View, Button, Flatlist, Text, TextInput, Pressable } from 'react-native'
+import { View, Button, Text } from 'react-native'
 import { useState } from 'react'
 import SetInput from './SetInput'
 

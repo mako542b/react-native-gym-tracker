@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import ExerciseLog from "../exercise/ExerciseLog";
 import AddExercise from "../exercise/AddExercise";
-import DeleteSession from "./DeleteSession";
 
 function sortExercises(exercises) {
     return exercises.slice().sort((a,b) => b.timestamp - a.timestamp)

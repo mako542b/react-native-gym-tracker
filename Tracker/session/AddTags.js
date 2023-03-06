@@ -1,4 +1,4 @@
-import { Pressable, Text, Modal, Button, View, TextInput } from 'react-native'
+import { Pressable, Text, Modal, Button, View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useState } from 'react'
 import TagsPicker from './TagsPicker'

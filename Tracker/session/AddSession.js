@@ -1,4 +1,4 @@
-import { View, Text, Button, Pressable,  Modal, TextInput } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
 import DatePicker from './DatePicker'

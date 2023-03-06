@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, Pressable, Modal, Button, TextInput, ScrollView } from 'react-native'
+import { View, Text, Pressable, Modal, Button, ScrollView } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import FilterDate from './FilterDate'
 import TagsPicker from './TagsPicker'
@@ -21,7 +21,6 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
             <Pressable onPress={() => setModal(true)} style={{backgroundColor:'#6bf', paddingVertical:10, paddingHorizontal:20, borderRadius: 14, flexDirection:'row', margin:9,}}>
                 <Text>filter & sort</Text>
             </Pressable>
-
             <Modal visible={modal}>
                 <View style={{height:'100%'}}>
                     <ScrollView>
@@ -62,7 +61,6 @@ export default function({ startDate, setStartDate, endDate, setEndDate, tags, se
                             <Text>Clear all</Text>
                         </Pressable>
                     </ScrollView>
-
                         <View style={{marginTop:'auto'}}>
                             <Button onPress={() => setModal(false)} title='submit'/>
                         </View>

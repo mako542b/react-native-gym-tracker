@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ScrollView } from "react-native"
+import { View, Text, ScrollView } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect, useMemo } from "react";
 import SetsView from "./SetsView";
@@ -34,13 +34,6 @@ export default function () {
         return matchingExercises.sort((a,b) => b.sessionDate - a.sessionDate)
     }, [loggedExercise, sessions])
 
-
-
-    
-
-
-
-
     return (
         <ScrollView>
             <PickExercise 
@@ -69,7 +62,6 @@ export default function () {
                     ))}
                 </View>
             )}
-            
         </ScrollView>
     )
 }
