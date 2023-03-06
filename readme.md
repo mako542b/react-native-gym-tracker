@@ -1,9 +1,13 @@
 # React native app for tracking a gym sessions 
 
-![app preview 1](/assets/tracker_preview_1.jpg | width=200)
-![app preview 2](/assets/tracker_preview_2.jpg | width=300)
-![app preview 3](/assets/tracker_preview_3.jpg | width=400)
-![app preview 4](/assets/tracker_preview_4.jpg)
+<img src="/assets/tracker_preview_1.jpg" width="100">
+<img src="/assets/tracker_preview_2.jpg" width="200">
+<img src="/assets/tracker_preview_3.jpg" width="300">
+<img src="/assets/tracker_preview_4.jpg" width="400">
+<!-- ![app preview 1](/assets/tracker_preview_1.jpg | width=200) -->
+<!-- ![app preview 2](/assets/tracker_preview_2.jpg | width=300) -->
+<!-- ![app preview 3](/assets/tracker_preview_3.jpg | width=400) -->
+<!-- ![app preview 4](/assets/tracker_preview_4.jpg) -->
 
 ## Functionality:
 - Add info about gym sessions, like performed exercises, sets made and details like weight or duration
