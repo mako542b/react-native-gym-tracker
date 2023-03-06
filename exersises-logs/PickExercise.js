@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Modal, Button } from "react-native"
+import { View, Text, Pressable, Modal, Button, ScrollView } from "react-native"
 import { useState, useEffect, useRef, useMemo } from "react";
 
 
@@ -19,15 +19,21 @@ export default function ({ sessions, setLoggedExercise }) {
 
     return (
         <View>
-
+            
             <Button 
                 title='choose exercise'
                 onPress={() => setModal(true)}
             />
 
             <Modal visible={modal}>
-                <View>
-                    <Text>Choose exercise:</Text>
+                <ScrollView>
+                    
+                    <Pressable
+                        onPress={() => setModal(false)}
+                        style={{alignSelf:'flex-end', padding:20}}
+                    >
+                        <Text style={{fontSize:20}}>X</Text>
+                    </Pressable>
                     {exercisesNames && Object.keys(exercisesNames).map(name => (
                         <Pressable
                             style={{alignItems:'center', padding:7,}}
@@ -40,7 +46,7 @@ export default function ({ sessions, setLoggedExercise }) {
                             <Text style={{color:'#822'}}>{name}</Text>
                         </Pressable>
                     ))}
-                </View>
+                </ScrollView>
             </Modal>
 
         </View>
