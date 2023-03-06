@@ -1,9 +1,20 @@
 # React native app for tracking a gym sessions 
 
-<img src="/assets/tracker_preview_1.jpg" width="100">
-<img src="/assets/tracker_preview_2.jpg" width="200">
-<img src="/assets/tracker_preview_3.jpg" width="300">
-<img src="/assets/tracker_preview_4.jpg" width="400">
+<img src="/assets/tracker_preview_1.jpg" width="500">  
+(______________________________________)
+
+<img src="/assets/tracker_preview_2.jpg" width="500">  
+(______________________________________)
+
+
+<img src="/assets/tracker_preview_3.jpg" width="500">  
+(______________________________________)
+
+
+<img src="/assets/tracker_preview_4.jpg" width="500">  
+(______________________________________)
+
+
 <!-- ![app preview 1](/assets/tracker_preview_1.jpg | width=200) -->
 <!-- ![app preview 2](/assets/tracker_preview_2.jpg | width=300) -->
 <!-- ![app preview 3](/assets/tracker_preview_3.jpg | width=400) -->
